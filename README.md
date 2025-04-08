@@ -29,3 +29,10 @@ Start the Development Server: Launch the local development server with:
 `static dev`
 
 Your site is now running locally at http://localhost:3000/. Open this URL in your browser to view your site.
+
+
+
+Follow this https://static.devdojo.com/docs/features/github-action/
+and https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
+
+Go live!
