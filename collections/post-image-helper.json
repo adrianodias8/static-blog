@@ -1,0 +1,10 @@
+[
+    {
+      "title": "Hello World 🌍",
+      "description": "This is my very fist post on my blog.",
+      "dateFormatted": "April 8th, 2025",
+      "content": "![Hello World](/assets/images/posts/hello-world.jpeg)\n\nOh, hi there! 👋 Welcome to my very first blog post. Consider this less of a \"grand opening\" and more of a \"soft whisper\" into the vast void of the internet—think of it like that awkward \"Hello, World!\" program we all wrote when first learning to code. It's basic, it's charmingly simple, and it's here just to check if things actually work (spoiler: they sometimes don't).\n\nI've decided to kick things off by embracing the concept of less is more, mostly because I’m lazy—oops, I meant \"efficient\"—and I found out static sites are an awesome way to achieve this. Plus, who has time for complicated CMS setups, database meltdowns, and plugin overloads anyway?\n\n## 🚀 Static Websites: When Less Really is More\n\nYou might be thinking: \"Static websites? Sounds boring!\" But hear me out, they're like the IKEA furniture of web development—sleek, functional, and occasionally frustratingly simple. No moving parts means fewer things to break, and trust me, that's a blessing for someone who still regularly loses their keys.\n\nI've been experimenting with Static by DevDojo because:\n\nIt's free (my favorite price).\n\nIt's easy (my favorite difficulty level).\n\nIt makes me look professional even when I'm still Googling basic Git commands (shhh, don't tell anyone).\n\n## 🛠️ How to Static Like a Pro (or at least Fake It)",
+      "link": "/post/hello-world",
+      "image" : "/assets/images/posts/hello-world.jpeg"
+    }
+  ]

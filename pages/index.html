@@ -1,0 +1,48 @@
+<layout title="AD Web Development" src="main.html">
+    
+    <div class="relative z-20 w-full max-w-4xl mx-auto mt-16 px-7 md:mt-24 lg:mt-32 xl:px-0">
+        <div class="flex flex-col items-center md:flex-row">
+            <div class="relative w-full md:w-1/2 ">
+                <h1 class="mb-5 text-4xl font-bold leading-tight md:text-4xl lg:text-6xl dark:text-white">
+                    Hello, I'm Adriano.
+                </h1> 
+                <p class="mb-6 text-base text-neutral-600 dark:text-neutral-400">Brussels-based Web Developer specializing in Drupal and Laravel. Over the years, I've had the privilege of creating and maintaining websites for various clients from freelance projects to in-house development roles.
+                </p>
+                <p class="mb-2 font-semibold text-neutral-800 dark:text-neutral-200">I can help you out with:</p>
+                <ul class="py-2 space-y-[3px] text-sm list-disc list-inside text-neutral-500 dark:text-neutral-400">
+                    <li>Drupal Development</li>
+                    <li>Laravel Development</li>
+                    <li>TALL Stack Development</li>
+                    <li>NodeJS Development</li>
+                    <li>Website Design</li>
+                    <li>Static Sites</li>
+                    <li>Branding and Logo Design</li>
+                    <li>and more...</li>
+                </ul>
+                <include src="button-blue.html" text="Reach out LinkedIn" link="https://www.linkedin.com/in/adriano-dias/"></include>
+                <include src="button.html" text="Get my CV" link="https://drive.google.com/file/d/1PJbv37rzfpKMeKDBSuCcdUCd_6sDQg4u/view?usp=sharing"></include>
+                
+            </div>
+            <div class="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
+                <img
+                  class="absolute object-cover object-center w-auto max-w-full rounded-lg h-[600px] transition-opacity duration-300 dark:opacity-0"
+                  src="/assets/images/me_sun.jpg"
+                  alt="me"
+                />
+                <img 
+                  class="absolute object-cover object-center w-auto max-w-full rounded-lg h-[600px] transition-opacity duration-300 opacity-0 dark:opacity-100"
+                  src="/assets/images/me.jpg"
+                  alt="me"
+                />
+              </div>
+        </div>
+    </div>
+
+        <!-- <not-include src="home/separator.html" text="Check out my projects"></include>   -->
+        <!-- <not-include src="home/projects.html"></include> -->
+        <include src="home/separator.html" text="Some of my writing"></include>  
+        <include src="home/writings.html"></include>
+    
+    </div>
+
+</layout>

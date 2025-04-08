@@ -1,0 +1,48 @@
+<layout src="main.html" title="About Me">
+
+    <section class="relative z-20 w-full max-w-4xl mx-auto mt-16 px-7 md:mt-24 lg:mt-32 xl:px-0">
+        <include 
+            src="page-heading.html" 
+            title="About Me" 
+            description="Hello 👋 I'm a software engineer and designer from Portugal, currently living in Brussels. I'm into building new products and learning new technology."
+        ></include>
+        
+        <img src="/assets/images/me2.jpg" class="max-h-[32rem] relative z-30 my-10 rounded-xl hue-rotate-15 hover:hue-rotate-90 transition-all duration-300" />
+
+        <h2 class="mb-2 text-2xl font-bold dark:text-neutral-200">Short Bio</h2>
+        <p class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg">My core expertise lies in PHP (especially Drupal and Laravel), and I’m equally enthusiastic about Linux, Docker, and emerging tech like LLMs. To be honest I have a passion for all things tech. Outside the coding realm, you’ll often find me exploring the world of photography or simply enjoying time with my girlfriend (she’s amazing and helps me with design and life in general).</p>
+
+        <h2 class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200">Career</h2>
+        <p class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg">After graduating college I landed an excellent job with Adobe. A few years later I worked for Google as a team lead on the design team. I am currently working for DevDojo and building some cool developer and designer tools.</p>
+
+        <h2 class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200">Experience</h2>
+        <div class="px-5 py-10">
+            <ForEach collection="experiences" as="experience">
+                
+                <If condition="loop == 1 || loop == 2 || loop == 3">
+                    <div class="pb-10 border-l border-gray-200 dark:border-neutral-700">
+                </If>
+
+                <include 
+                src="about-experience.html" 
+                    dates="{experience.dates}"
+                    role="{experience.role}"
+                    company="{experience.company}"
+                    description="{experience.description}"
+                    logo="{experience.logo}"
+                ></include>
+
+                <If condition="loop == 1 || loop == 2 || loop == 3">
+                    </div>
+                </If>
+            
+            </ForEach>
+        </div>
+
+
+        <h2 class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200">Let's Connect</h2>
+        <p class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg">You can send me an <a href="mailto:adrianodias1994@gmail.com" class="text-indigo-600 underline">email</a> and I'll be sure to get back to you.</p>
+
+    </section>
+
+</layout>

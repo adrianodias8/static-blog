@@ -1,0 +1,8 @@
+[
+    {
+        "name" : "This blog",
+        "description": "This is the blog where I write about my projects and experiences.",
+        "image" : "/assets/images/projects/adwebdev.jpeg",
+        "url" : "https://adwebdev.xyz"
+    }
+]

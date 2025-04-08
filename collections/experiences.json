@@ -1,0 +1,30 @@
+[
+    {
+        "dates" : "January 2024 · Present",
+        "role" : "Freelance Web Developer",
+        "company" : "Randstad",
+        "description" : "Delivered custom full-stack web solutions using PHP, Drupal, and Laravel, collaborating closely with clients, integrating APIs, optimizing performance, and providing ongoing maintenance and technical support.",
+        "logo" : "/assets/images/experiences/randstad.jpg"
+    },
+    {
+        "dates" : "December 2020 · December 2024",
+        "role" : "Drupal Developer",
+        "company" : "ATS4IT",
+        "description" : "Maintained and enhanced sites based on evolving needs, built reusable Drupal/Laravel components, and supported migration from Drupal 7 to Drupal 8.",
+        "logo" : "/assets/images/experiences/ats4it.jpeg"
+    },
+    {
+        "dates" : "November 2018 · December 2020",
+        "role" : "Drupal Developer",
+        "company" : "AGAP2IT Portugal",
+        "description" : "Maintained and enhanced sites based on evolving needs, built reusable Drupal/Laravel components, and supported migration from Drupal 7 to Drupal 8.",
+        "logo" : "/assets/images/experiences/agap2it.jpeg"
+    },
+    {
+        "dates" : "May 2012 · November 2018 ",
+        "role" : "Drupal Developer",
+        "company" : "Pictonio",
+        "description" : "Developed and maintained cross-browser compatible Drupal 7/8 websites, implemented new features, and collaborated with remote teams to deliver e-commerce, social media, and corporate platforms.",
+        "logo" : "/assets/images/experiences/pictonio.png"
+    }
+]
