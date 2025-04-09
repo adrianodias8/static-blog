@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
-
-    <!-- Force dark mode by default -->
+    
+    <!-- Used to add dark mode right away, adding here prevents any flicker -->
     <script>
-        document.documentElement.classList.add('dark');
         if (typeof(Storage) !== "undefined") {
-            localStorage.setItem('dark_mode', 'true');
+            if(localStorage.getItem('dark_mode') && localStorage.getItem('dark_mode') == 'true'){
+                document.documentElement.classList.add('dark');
+            }
+            if (localStorage.getItem('dark_mode') === null) {
+                localStorage.setItem('dark_mode', true);
+                document.documentElement.classList.add('dark');
+            }
         }
     </script>
     

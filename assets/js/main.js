@@ -1,6 +1,6 @@
 // Add your javascript here
 
-window.darkMode = false;
+window.darkMode = true;
 
 const stickyClasses = ['fixed', 'h-14'];
 const unstickyClasses = ['absolute', 'h-20'];
@@ -23,16 +23,16 @@ document.addEventListener('DOMContentLoaded', function(){
     mobileMenuFunctionality();
 });
 
-// window.toggleDarkMode = function(){
-//     document.documentElement.classList.toggle('dark');
-//     if(document.documentElement.classList.contains('dark')){
-//         localStorage.setItem('dark_mode', true);
-//         window.darkMode = true;
-//     } else {
-//         window.darkMode = false;
-//         localStorage.setItem('dark_mode', false);
-//     }
-// }
+window.toggleDarkMode = function(){
+    document.documentElement.classList.toggle('dark');
+    if(document.documentElement.classList.contains('dark')){
+        localStorage.setItem('dark_mode', true);
+        window.darkMode = true;
+    } else {
+        window.darkMode = false;
+        localStorage.setItem('dark_mode', false);
+    }
+}
 
 
 
@@ -68,7 +68,7 @@ document.getElementById('darkToggle').addEventListener('click', function(){
     document.documentElement.classList.add('duration-300');
     
     if(document.documentElement.classList.contains('dark')){
-        localStorage.removeItem('dark_mode');
+        localStorage.setItem('dark_mode', false);
         showDay(true);
         
     } else {
@@ -136,7 +136,7 @@ function showNight(animate){
 
 window.applyMenuItemClasses = function(){
     const menuItems = document.querySelectorAll('#menu a');
-    console.log(menuItems);
+    // console.log(menuItems);
     for(let i = 0; i < menuItems.length; i++){
         if(menuItems[i].pathname == window.location.pathname){
             menuItems[i].classList.add('text-neutral-900', 'dark:text-white');
