@@ -26,6 +26,9 @@
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.png">
     <script src="//unpkg.com/alpinejs" defer></script>
     {tailwindcss}
+    <style type="text/tailwindcss">
+        @custom-variant dark (&:where(.dark, .dark *));
+    </style>
 </head>
 <body class="antialiased bg-white dark:bg-neutral-950">
     <!-- <nor-include src="square-lines.html"></include> -->

@@ -21,7 +21,13 @@
                 </ul>
                 <include src="button-blue.html" text="Reach out LinkedIn" link="https://www.linkedin.com/in/adriano-dias/"></include>
                 <include src="button.html" text="Get my CV" link="https://drive.google.com/file/d/1PJbv37rzfpKMeKDBSuCcdUCd_6sDQg4u/view?usp=sharing"></include>
-                
+                <button
+                    onclick="var m=document.getElementById('calendar-modal');m.style.display='flex';m.classList.remove('hidden')"
+                    class="inline-flex w-auto px-4 py-2 mt-5 text-xs font-semibold duration-300 ease-out border rounded-full cursor-pointer bg-neutral-900 dark:bg-white dark:text-neutral-900 text-neutral-100 hover:border-neutral-700 border-neutral-900 dark:hover:border-neutral-300 hover:bg-white dark:hover:bg-black dark:hover:text-white hover:text-neutral-900">
+                    Book 30 min call
+                </button>
+
+
             </div>
             <div class="relative justify-end hidden w-full mt-10 md:flex md:pl-10 md:w-1/2 md:mt-0 md:translate-y-4 xl:translate-y-0">
                 <img
@@ -44,5 +50,14 @@
         <include src="home/writings.html"></include>
     
     </div>
+
+<!-- Calendar Modal -->
+<div id="calendar-modal" style="display:none; position:fixed; inset:0; z-index:9999; align-items:center; justify-content:center">
+    <div style="position:absolute; inset:0; background:rgba(0,0,0,0.6)" onclick="document.getElementById('calendar-modal').style.display='none'"></div>
+    <div style="position:relative; width:100%; max-width:36rem; margin:0 1rem; height:80vh; border-radius:0.5rem; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.25); background:white; color-scheme:light">
+        <button onclick="document.getElementById('calendar-modal').style.display='none'" style="position:absolute; top:12px; right:12px; z-index:10; background:none; border:none; font-size:24px; cursor:pointer; color:#666">&times;</button>
+        <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0ea5HQHBkEcqXWH-r0iys6X-8DQxjBq32xYaI3j_MqxJovI_ueIeOEOSsin3ANab-HGa6GSAjO?gv=true" style="width:100%; height:100%; border:0; color-scheme:light"></iframe>
+    </div>
+</div>
 
 </layout>
