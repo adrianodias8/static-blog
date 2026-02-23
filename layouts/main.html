@@ -26,15 +26,6 @@
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.png">
     <script src="//unpkg.com/alpinejs" defer></script>
     {tailwindcss}
-    <script>
-        // Fix dark mode toggle for Tailwind v4 CDN (dev server only)
-        if (document.querySelector('script[src*="@tailwindcss/browser"]')) {
-            var s = document.createElement('style');
-            s.setAttribute('type', 'text/tailwindcss');
-            s.textContent = '@custom-variant dark (&:where(.dark, .dark *));';
-            document.head.appendChild(s);
-        }
-    </script>
 </head>
 <body class="antialiased bg-white dark:bg-neutral-950">
     <!-- <nor-include src="square-lines.html"></include> -->
