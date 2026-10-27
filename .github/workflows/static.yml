@@ -21,6 +21,11 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  # Pin the generator so a build is reproducible; bump to upgrade.
+  STATICO_VERSION: v0.1.0
+  SITE_URL: https://adwebdev.xyz
+
 jobs:
   # Single deploy job since we're just deploying
   deploy:
@@ -31,19 +36,37 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      - name: GitHub Action for npx
-        uses: mikeal/npx@1.0.0
-      - name: Run NPM Install
-        run: npm install
-      - name: Run the static build step
-        run: npx @devdojo/static@1.0.31 build
+
+      # Statico fetches standalone Tailwind and esbuild binaries on first use.
+      # Caching them keeps every run after the first one offline and fast.
+      - name: Cache Statico toolchain
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/statico
+          key: statico-tools-${{ env.STATICO_VERSION }}
+
+      - name: Install Statico
+        run: |
+          curl -fsSL "https://github.com/adrianodias8/statico/releases/download/${STATICO_VERSION}/statico-x86_64-unknown-linux-musl.tar.gz" \
+            | sudo tar xz -C /usr/local/bin statico
+          statico --version
+
+      # Fails the build on broken links, missing anchors and unresolved
+      # placeholders. Drop this step if you'd rather deploy regardless.
+      - name: Check
+        run: statico check
+
+      - name: Build
+        run: statico build "$SITE_URL"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: './_site/'
+          path: "./_site/"
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
