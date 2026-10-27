@@ -18,12 +18,43 @@ Here's the honest state of my "I just want a simple blog" project:
 
 - **[Statico](https://github.com/adrianodias8/statico)** — a static site generator. Replaces Static by DevDojo. It builds this very page. ✅ Done, actually works, I'm using it right now.
 - **berth** — a free, open-source take on OrbStack. Docker and Linux on Apple Silicon, straight onto Virtualization.framework. Because I looked at my container tooling and thought "how hard can it be." 🚧
-- **[rustyphp](https://github.com/adrianodias8/rustyphp)** — a PHP engine. In Rust. I want you to sit with that one for a moment, because I certainly have. 🚧
-- **[turboclaw](https://github.com/adrianodias8/turboclaw)** — my own flavour of AI coding agent, because apparently the ones that exist are someone else's. 🚧
+- **rustyphp** — a PHP engine. In Rust. We'll come back to this one. 💀
 
-I write Drupal and Laravel for a living. PHP has paid for every meal I have eaten in a decade. And here I am, at a terminal, implementing its engine. For fun. Voluntarily.
+That's the part I'm willing to put in a list with a straight face.
 
-At some point "not invented here" stopped being a joke about other teams and became a description of my weekends.
+## ⚰️ The Graveyard
+
+Here's the part nobody puts in the list.
+
+For every project above there's a folder of repos where the README is comfortably the most finished artefact in it. Things I started at 11pm with total conviction and abandoned by Thursday, not because they didn't work, but because the interesting problem had already been solved in my head and the remaining 80% was just *typing*.
+
+This is, I think, the actual occupational hazard of vibe coding. Not bad code — bad *follow-through*. When starting something costs an evening instead of a quarter, you start everything. The bottleneck was never the idea. It was the three weeks of grind that used to filter out the ideas that weren't worth it, and that filter is gone now.
+
+So you end up with a graveyard. Every vibe coder has one. Mine has a view.
+
+I've made peace with it, mostly. Some of those repos were genuinely just me learning something with extra steps, and there are worse ways to spend a Tuesday. But I do notice that the three projects I listed above are the three I actually *use*, and I don't think that's coincidence. Dogfooding is the only honest filter I've found: if you don't reach for it on a normal day, it's already in the graveyard, it just hasn't been told yet.
+
+## 💀 rustyphp, or: Signs and Portents
+
+Which brings me to rustyphp.
+
+I write Drupal and Laravel for a living. PHP has paid for every meal I have eaten in a decade. So naturally I decided to implement its engine. In Rust. Voluntarily, in my own time, for fun.
+
+Shortly after I started, my MacBook's screen did this:
+
+![A MacBook screen with two vertical black bands of dead pixels running down it](/assets/images/posts/cursed-screen.jpg)
+
+Two vertical black bars. Straight down the display. Permanently.
+
+Now. I want to be clear that I am a professional and I understand that display failures have physical causes — a flex cable, a panel defect, thermal cycling, the ordinary cruelty of hardware. There is no mechanism by which writing a PHP parser damages a laptop screen.
+
+I understand this.
+
+I am simply observing that I have written PHP for ten years without incident, and that within weeks of attempting to *reimplement* it, my machine developed a permanent visual impairment in the exact region where I had been reading the parser code.
+
+I'm not saying it's related. I'm saying I haven't opened that repo since, and my screen hasn't gotten any worse. Draw your own conclusions. Some things aren't meant to be rewritten, and PHP's engine may well be load-bearing for reality in ways the spec doesn't document.
+
+rustyphp stays where it is. Respectfully. 🙏
 
 ## 🎤 In My Defence, DHH Started It
 
@@ -74,7 +105,7 @@ Partly because it's the most fun I've had programming in years, and I think that
 
 And partly because if the constraint really has moved, the people who find out first will be the ones who went and poked it.
 
-I'll reassess when something catches fire. It'll be fine. Probably. 🦀
+I'll reassess when something catches fire. Something already did catch fire, technically, but it was only the screen. 🦀
 
 ## 🔮 Next: Local Models, and a Very Expensive Laptop
 
@@ -84,7 +115,7 @@ I've been dabbling with running models locally, and so far it's been equal parts
 
 A MacBook Pro M5 Max with 128GB of unified memory arrives later this week. 🎉
 
-That is an amount of RAM that would have run a small hosting company, and I intend to spend it asking local models to write Rust I will then nod at knowingly.
+That is an amount of RAM that would have run a small hosting company, and I intend to spend it asking local models to write Rust I will then nod at knowingly. It also, and I cannot stress this enough, has a **screen that works**.
 
 I'm planning to write up what I actually find, honestly — which models are genuinely usable at that memory, what the speeds really look like rather than what the benchmarks claim, and whether local models are good enough yet to do the sort of work I've been handing to the cloud. Including the bits that don't work, because those posts are more useful and nobody writes them.
 
