@@ -4,5 +4,11 @@
         "description": "This is the blog where I write about my projects and experiences.",
         "image" : "/assets/images/projects/adwebdev.jpeg",
         "url" : "https://adwebdev.xyz"
+    },
+    {
+        "name" : "Statico",
+        "description": "A static site generator I wrote in Rust. One binary, no Node, plain HTML in and fast static sites out. It builds this blog.",
+        "image" : "/assets/images/projects/statico.png",
+        "url" : "https://github.com/adrianodias8/statico"
     }
 ]

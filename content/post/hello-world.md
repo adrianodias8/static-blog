@@ -1,37 +1,46 @@
 ---
 title: Hello World 🌍
-description: This is my very fist post on my blog.
+description: This is my very first post on my blog.
 dateFormatted: April 8th, 2025
 ---
 
 ![Hello World](/assets/images/posts/hello-world.jpeg)
 
+> **Updated, October 2026** — this post originally walked through building the blog with Static by DevDojo. The site now runs on [Statico](https://github.com/adrianodias8/statico), a static site generator I ended up writing in Rust. The commands and the deploy workflow below have been updated to match. Everything else is as it was.
+
 Oh, hi there! 👋 Welcome to my very first blog post. Think of it like that awkward "Hello, World!" program we all wrote when first learning to code.
 
-I've decided to kick things off by embracing the concept of less is more, mostly because I’m lazy—oops, I meant "efficient" and I found out static sites are an awesome way to achieve this. Plus, who has time for complicated CMS setups, database migrations, updates, etc etc...
+I've decided to kick things off by embracing the concept of less is more, mostly because I'm lazy—oops, I meant "efficient" and I found out static sites are an awesome way to achieve this. Plus, who has time for complicated CMS setups, database migrations, updates, etc etc...
 
 ## 🚀 Static Websites: When Less Really is More
 
-You might be thinking: "Static websites? Sounds boring!" But hear me out, they're like the IKEA furniture of web development—sleek, functional, and occasionally frustratingly simple. No moving parts means fewer things to break, less to mantain.
+You might be thinking: "Static websites? Sounds boring!" But hear me out, they're like the IKEA furniture of web development—sleek, functional, and occasionally frustratingly simple. No moving parts means fewer things to break, less to maintain.
 
-I've been experimenting with Static by DevDojo because:
+I started out with Static by DevDojo because:
 
 - It's free (my favorite price).
 - It's easy (my favorite difficulty level).
 - You can get something looking nice really fast.
 
-## 🛠️ How to Static Like a Pro (or at least Fake It)
-Here's the quick guide to getting started with Static by DevDojo:
+That's what got this blog off the ground, and the idea behind it is still exactly what I wanted: pages are just HTML files, with a handful of tags for layouts, includes and loops. No template language to learn.
 
-Install Static CLI: First, ensure you have Node.js installed. Then, open your terminal and run:
+What I kept tripping over was everything around it. It needs Node, the Tailwind setup broke in ways that were hard to pin down, and when something went wrong the error rarely told me which file to look at. So I did the reasonable, proportionate thing and rewrote it in Rust. 🙃
 
-`npm install -g @devdojo/static`
+That's **Statico**: same HTML, same folders, same tags — one binary instead of a Node toolchain. My site files didn't change at all when I switched, which is the part I'm most pleased about.
 
-This command installs the Static CLI globally, allowing you to create and manage your static sites with ease.
+## 🛠️ How to Statico Like a Pro (or at least Fake It)
+
+Here's the quick guide to getting started:
+
+Install Statico: it's a single binary, so there's nothing else to set up. Open your terminal and run:
+
+`curl -fsSL https://raw.githubusercontent.com/adrianodias8/statico/main/packaging/install.sh | sh`
+
+This drops a `statico` binary into `~/.local/bin`. Builds for other platforms are on the [releases page](https://github.com/adrianodias8/statico/releases).
 
 Create a New Project: Navigate to the directory where you want your project to reside and run:
 
-`static new my-static-site`
+`statico new my-static-site`
 
 Replace my-static-site with your desired project name. This command creates a new folder with all the necessary files for your static site.
 
@@ -43,15 +52,21 @@ Move into your project's directory to start working on it.
 
 Start the Development Server: Launch the local development server with:
 
-`static dev`
+`statico dev`
 
-Your site is now running locally at http://localhost:3000/. Open this URL in your browser to view your site.
+Your site is now running locally at http://localhost:3000/, and it reloads by itself when you save a file. Open this URL in your browser to view your site.
+
+Check Your Work: Before you push anything, run:
+
+`statico check`
+
+This builds the site and tells you about broken links, missing `#anchor` targets, images without alt text and placeholders you typo'd. Zero errors means you're good.
 
 Build for Production: Once you're satisfied with your site, generate the production-ready files by running:
 
-`static build`
+`statico build`
 
-This command creates a dist folder containing your optimized static files, ready for deployment.
+This command creates a `_site` folder containing your optimized static files, ready for deployment.
 
 Congratulations, you're now the proud owner of a static website!
 
@@ -59,16 +74,16 @@ Congratulations, you're now the proud owner of a static website!
 
 ⚡ Speed: Super fast loading times due to optimized static assets.
 
-🔐 Security: Less vulnerable to hacking because, honestly, there’s nothing dynamic to hack.
+🔐 Security: Less vulnerable to hacking because, honestly, there's nothing dynamic to hack.
 
-💰 Cost-effective: Hosting is virtually free. For example, GitHub Pages offers free hostin
-
+💰 Cost-effective: Hosting is virtually free. For example, GitHub Pages offers free hosting.
 
 ## 🌐 Deploying Your Static Website on GitHub Pages
 
-Let’s take advantage of GitHub Pages to host your static site completely for free! Follow these simple steps to deploy your site automatically each time you update your repository.
+Let's take advantage of GitHub Pages to host your static site completely for free! Follow these simple steps to deploy your site automatically each time you update your repository.
 
 Step-by-Step Guide for GitHub Pages
+
 1. Create a GitHub Repository:
 
 Visit GitHub and create a new repository (for example, my-static-site).
@@ -92,9 +107,9 @@ In your repository, you should find new folder `.github/workflows` and a `static
 
 ***Note on GitHub Workflow***
 
-I faced some issue when trying to deploy with default workflow.
+Back when this ran on Static, the default workflow didn't work for me — some of the actions it used were outdated, and I added a [pull request](https://github.com/static-templates/aria/pull/4) so hopefully someone from DevDojo updates it in their templates.
 
-Turns out some versions of github actions were outdated, here my update working verison of the file.
+The current one is shorter, because there's no Node to install. It downloads one binary, checks the site, builds it and deploys:
 
 `static.yml`
 ```
@@ -121,6 +136,11 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  # Pin the generator so a build is reproducible; bump to upgrade.
+  STATICO_VERSION: v0.1.0
+  SITE_URL: https://adwebdev.xyz
+
 jobs:
   # Single deploy job since we're just deploying
   deploy:
@@ -131,31 +151,48 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      - name: GitHub Action for npx
-        uses: mikeal/npx@1.0.0
-      - name: Run NPM Install
-        run: npm install
-      - name: Run the static build step
-        run: npx @devdojo/static build
+
+      # Statico fetches standalone Tailwind and esbuild binaries on first use.
+      # Caching them keeps every run after the first one offline and fast.
+      - name: Cache Statico toolchain
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/statico
+          key: statico-tools-${{ env.STATICO_VERSION }}
+
+      - name: Install Statico
+        run: |
+          curl -fsSL "https://github.com/adrianodias8/statico/releases/download/${STATICO_VERSION}/statico-x86_64-unknown-linux-musl.tar.gz" \
+            | sudo tar xz -C /usr/local/bin statico
+          statico --version
+
+      # Fails the build on broken links, missing anchors and unresolved
+      # placeholders. Drop this step if you'd rather deploy regardless.
+      - name: Check
+        run: statico check
+
+      - name: Build
+        run: statico build "$SITE_URL"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: './_site/'
+          path: "./_site/"
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
 
 ```
 
-I added a [pull requst]( https://github.com/static-templates/aria/pull/4) so hopefully someone from devdojo will update this in their templates.
-
+The whole thing takes about 20 seconds, most of which is GitHub spinning up the runner.
 
 3. Enable GitHub Pages in Your Repository:
 
-Go to your repository’s Settings tab.
+Go to your repository's Settings tab.
 
 Select Pages from the sidebar.
 
@@ -173,8 +210,9 @@ Follow the official GitHub documentation to configure your custom domain.
 
 
 ## 🎉 In Conclusion (or Just Getting Started?)
+
 Remember, simplicity doesn't mean sacrificing style or functionality. Sometimes, stripping things down to basics is exactly what's needed to get moving and for me was how I ended up with my blog running.
 
-Sure, this blog post might just be a test run, but it's my test run. And I'm really happy with it. Hopefully soon I will have some more to share.
+Sure, this blog post might just be a test run, but it's my test run. And I'm really happy with it. Though I'll admit "I just want a simple blog" turning into "I wrote my own static site generator" is a very on-brand way for this to have gone.
 
 Stay tuned for more rambling!
