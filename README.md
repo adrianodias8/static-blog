@@ -1,38 +1,43 @@
 # Static Blog
 
-This is my personal blog / portfolio created with [Static](https://static.devdojo.com).
+This is my personal blog / portfolio. It was created with [Static](https://static.devdojo.com)
+and now builds with [Statico](https://github.com/adrianodias8/statico), a single-binary
+static site generator that began as a Rust rewrite of Static. The site files are unchanged —
+same `pages/`, `layouts/`, `includes/`, `collections/` and `content/`.
 
 ![Cover Photo](assets/images/cover.jpg)
 
 
 
-Install Static CLI: First, ensure you have Node.js installed. Then, open your terminal and run:
+Install Statico: there is no Node.js to install, just one binary. Open your terminal and run:
 
-`npm install -g @devdojo/static`
+`curl -fsSL https://raw.githubusercontent.com/adrianodias8/statico/main/packaging/install.sh | sh`
 
-This command installs the Static CLI globally, allowing you to create and manage your static sites with ease.
+This puts a `statico` binary in `~/.local/bin`. Builds for other platforms are on the
+[releases page](https://github.com/adrianodias8/statico/releases).
 
-Create a New Project: Navigate to the directory where you want your project to reside and run:
+Get the Project: clone this repository and move into it:
 
-`static new my-static-site`
+`git clone https://github.com/adrianodias8/static-blog.git && cd static-blog`
 
-Replace my-static-site with your desired project name. This command creates a new folder with all the necessary files for your static site.
+Start the Development Server: launch the local development server with:
 
-Navigate to Your Project Folder:
+`statico dev`
 
-`cd my-static-site`
+Your site is now running locally at http://localhost:3000/, and it reloads when you save a
+file. Open this URL in your browser to view your site.
 
-Move into your project's directory to start working on it.
+Check Before Pushing: build the site and verify it with:
 
-Start the Development Server: Launch the local development server with:
+`statico check`
 
-`static dev`
-
-Your site is now running locally at http://localhost:3000/. Open this URL in your browser to view your site.
-
+This reports broken links, missing `#anchor` targets, images without alt text and unresolved
+placeholders. Zero errors means it is ready.
 
 
-Follow this https://static.devdojo.com/docs/features/github-action/
-and https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
+
+Pushing to `main` builds the site and publishes it to GitHub Pages — see
+[.github/workflows/static.yml](.github/workflows/static.yml). The custom domain follows
+https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
 
 Go live!
